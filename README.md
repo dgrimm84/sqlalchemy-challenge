@@ -25,6 +25,15 @@
 
 
 - <ins>app.py</ins> - this is the 2nd of the two main code files for this challenge that executes the following:
-  - using Flask, generated an API
+> - using Flask, generate an API to store data that can be accessed by specific routes.  These routes are accessible by button click and also by the user typing date ranches in the URL Path:<br><br>
   ![image](https://github.com/user-attachments/assets/3c5435c6-e026-442b-9c39-4105ecf3bed9)<br>
+> - the /precipitation route displays a jsonified version of the last 12 months of precipitation readings
+> ![image](https://github.com/user-attachments/assets/56941795-947b-465a-a366-6baa314eb33d)
+> - the /stations route displays the 9 unique station IDs and the number of unique measurements of each:<br><br>
+> ![image](https://github.com/user-attachments/assets/bc861804-4a2c-40e7-add5-1d7bf99cc1cb)
+> - the /tobs route displays the temperature reading data for the last 12 months of the most active station:<br><br>
+- ![image](https://github.com/user-attachments/assets/ddc1336c-dae2-4397-a521-e1fd55a3260b)
+> - the /start route allows the user to add a starting date to the end of the API URL as a custom route to display the minimum, maximum, and average temperatures of the most active station from the inputted date to present:<br><br>
+> 
+
 
