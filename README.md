@@ -27,7 +27,7 @@
 - <ins>app.py</ins> - this is the 2nd of the two main code files for this challenge that executes the following:
 > - using Flask, generate an API to store data that can be accessed by specific routes.  These routes are accessible by button click and also by the user typing date ranches in the URL Path:<br><br>
   ![image](https://github.com/user-attachments/assets/3c5435c6-e026-442b-9c39-4105ecf3bed9)<br>
-> - the /precipitation route displays a jsonified version of the last 12 months of precipitation readings
+> - the /precipitation route displays a jsonified version of the last 12 months of precipitation readings:<br><br>
 > ![image](https://github.com/user-attachments/assets/56941795-947b-465a-a366-6baa314eb33d)
 > - the /stations route displays the 9 unique station IDs and the number of unique measurements of each:<br><br>
 > ![image](https://github.com/user-attachments/assets/bc861804-4a2c-40e7-add5-1d7bf99cc1cb)
