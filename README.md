@@ -32,8 +32,13 @@
 > - the /stations route displays the 9 unique station IDs and the number of unique measurements of each:<br><br>
 > ![image](https://github.com/user-attachments/assets/bc861804-4a2c-40e7-add5-1d7bf99cc1cb)
 > - the /tobs route displays the temperature reading data for the last 12 months of the most active station:<br><br>
-- ![image](https://github.com/user-attachments/assets/ddc1336c-dae2-4397-a521-e1fd55a3260b)
+> ![image](https://github.com/user-attachments/assets/ddc1336c-dae2-4397-a521-e1fd55a3260b)
 > - the /start route allows the user to add a starting date to the end of the API URL as a custom route to display the minimum, maximum, and average temperatures of the most active station from the inputted date to present:<br><br>
-> 
+> ![image](https://github.com/user-attachments/assets/50ce0c7a-41a1-4eb2-aa89-aa0a9e6b6f1c)<br>
+> ![image](https://github.com/user-attachments/assets/5ab59647-990c-4b78-90f0-a40ccc04b9b3)<br>
+> - the /start/end route allows the user to add a starting date and ending date to the end of the API URL as a custom route to display the minimum, maximum, and average temperature of the most active station from the inputted start date to the inputted end date:<br><br>
+> ![image](https://github.com/user-attachments/assets/1583d356-32bf-43b5-a02c-8661e3339e4d)<br>
+> ![image](https://github.com/user-attachments/assets/8f9ccb22-6ac1-476b-8b47-f9854b212b82)<br>
+
 
 
