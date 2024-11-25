@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 import json
 from collections import Counter
 import pandas as pd
+import statistics
 
 #################################################
 # Database Setup
@@ -75,8 +76,17 @@ most_active_station_data = (
     .all()
 )
 
+# also capture all-time temperature data to be used later for user date input
+most_active_station_data_all = (
+    session.query(Measurement.date, Measurement.tobs)
+    .filter(Measurement.station == most_active_station_id)
+    .order_by(Measurement.date)
+    .all()
+)
+
 # turn the above query results into a dictionary for properly displaying it in flask
 most_active_station_data_dict = {date: tobs for date, tobs in most_active_station_data}
+most_active_station_data_all_dict = {date: tobs for date, tobs in most_active_station_data_all}
 
 # Close the session after the query
 session.close()
@@ -178,8 +188,22 @@ def start(start_date):
 # create a method to use user-inputted start date at the end of the URL to capture tobs date from that inputted date
 # to present
 def tobs_start_date(start_date):
-    tobs_start_date_dict = {date: tobs for date, tobs in most_active_station_data_dict.items() if datetime.strptime(date, '%Y-%m-%d') >= start_date}
-    return jsonify(tobs_start_date_dict)
+    tobs_start_date_dict = {date: tobs for date, tobs in most_active_station_data_all_dict.items() 
+                            if datetime.strptime(date, '%Y-%m-%d') >= start_date}
+    tobs_results = list(tobs_start_date_dict.values())
+    tobs_min = min(tobs_results)
+    tobs_max = max(tobs_results)
+    tobs_avg = statistics.mean(tobs_results)
+
+    tobs_results_dict = {
+        "total_data": tobs_start_date_dict,
+        "min_temp": tobs_min,
+        "max_temp": tobs_max,
+        "avg_temp": tobs_avg
+    }
+
+    return jsonify(tobs_results_dict)
+
 
 @app.route("/start/end/<start_date>/<end_date>", methods=["GET"])
 def start_end(start_date, end_date):
@@ -197,10 +221,23 @@ def start_end(start_date, end_date):
 # Method to handle the filtered data between start and end dates
 def tobs_start_end_dates(start_date, end_date):
     tobs_start_end_dict = {
-        date: tobs for date, tobs in most_active_station_data_dict.items()
+        date: tobs for date, tobs in most_active_station_data_all_dict.items()
         if start_date <= datetime.strptime(date, '%Y-%m-%d') <= end_date
     }
-    return jsonify(tobs_start_end_dict)
+
+    tobs_results = list(tobs_start_end_dict.values())
+    tobs_min = min(tobs_results)
+    tobs_max = max(tobs_results)
+    tobs_avg = statistics.mean(tobs_results)
+
+    tobs_results_dict = {
+        "total_data": tobs_start_end_dict,
+        "min_temp": tobs_min,
+        "max_temp": tobs_max,
+        "avg_temp": tobs_avg
+    }    
+
+    return jsonify(tobs_results_dict)
 
 if __name__ == "__main__":
     app.run(debug=False)
